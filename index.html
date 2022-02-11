@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
-      .container {
-        width: 300px;
-      }
-
       /* For help to create the more complex shapes I have used code from
          an article 'The Shapes of CSS' from CSS-Tricks
          Article link: https://css-tricks.com/the-shapes-of-css/ */
@@ -76,6 +72,7 @@
   <body>
     <h1>Rainbow Shapes CSS</h1>
 
+    <!-- The 7 shapes elements -->
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
@@ -96,22 +93,33 @@
         "circle",
       ];
 
-      const divs = document.querySelectorAll("div");
-      let divArray = Array.from(divs);
+      // Get each div element and place in an array
+      let divArray = Array.from(document.querySelectorAll("div"));
 
+      // A counter variable for each element
       let count = [0, 0, 0, 0, 0, 0, 0];
 
+      // A function that will change the class name of an element
+      // The function takes in 1 parameter to represent an elements position
+      // in an array so we can update the appropriate counter related to the element
       function changeShape(i) {
+        // If the count is greater than the length of the shapes array
+        // Reset the counter to 0
         if (count[i] > shapes.length - 1) {
           count[i] = 0;
         }
 
+        // Set the shape of the element to the name in the shape array
+        // at the current count position
         let newShape = shapes[count[i]];
         divArray[i].setAttribute("class", newShape);
 
+        // Increase the counter at the relevant position by 1
         count[i]++;
       }
 
+      // Add an event listener on each element of divArray and
+      // pass the position to changeShape() function to update the targeted shape
       for (let position = 0; position < divArray.length; position++) {
         divArray[position].addEventListener("click", function () {
           changeShape(position);
