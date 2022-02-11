@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      .container {
+        width: 300px;
+      }
+
+      /* For help to create the more complex shapes I have used code from
+         an article 'The Shapes of CSS' from CSS-Tricks
+         Article link: https://css-tricks.com/the-shapes-of-css/ */
+
+      .circle {
+        width: 100px;
+        height: 100px;
+        background: red;
+        border-radius: 50%;
+        margin: 5px;
+      }
+
+      .square {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        margin: 5px;
+      }
+
+      .oval {
+        width: 200px;
+        height: 100px;
+        background: yellow;
+        border-radius: 100px / 50px;
+        margin: 5px;
+      }
+
+      .rectangle {
+        width: 200px;
+        height: 100px;
+        background: green;
+        margin: 5px;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid blue;
+        margin: 5px;
+      }
+
+      .parallelogram {
+        width: 200px;
+        height: 100px;
+        transform: skew(20deg);
+        background: indigo;
+        margin: 5px;
+      }
+
+      .trapezoid {
+        border-bottom: 100px solid violet;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        height: 0;
+        width: 200px;
+        margin: 5px;
+      }
+    </style>
+
+    <title>Rainbow Shapes CSS</title>
+  </head>
+  <body>
+    <h1>Rainbow Shapes CSS</h1>
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <script>
+      // Initialise an array with the shapes in it
+      const shapes = [
+        "square",
+        "oval",
+        "rectangle",
+        "triangle",
+        "parallelogram",
+        "trapezoid",
+        "circle",
+      ];
+
+      const divs = document.querySelectorAll("div");
+      let divArray = Array.from(divs);
+
+      let count = [0, 0, 0, 0, 0, 0, 0];
+
+      function changeShape(i) {
+        if (count[i] > shapes.length - 1) {
+          count[i] = 0;
+        }
+
+        let newShape = shapes[count[i]];
+        divArray[i].setAttribute("class", newShape);
+
+        count[i]++;
+      }
+
+      for (let position = 0; position < divArray.length; position++) {
+        divArray[position].addEventListener("click", function () {
+          changeShape(position);
+        });
+      }
+    </script>
+  </body>
+</html>

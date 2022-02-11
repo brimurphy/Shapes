@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      .container {
+        width: 200px;
+        margin-bottom: 10px;
+      }
+
+      /* For help to create the more complex shapes I have used code from
+         an article 'The Shapes of CSS' from CSS-Tricks
+         Article link: https://css-tricks.com/the-shapes-of-css/ */
+      .circle {
+        width: 100px;
+        height: 100px;
+        background: red;
+        border-radius: 50%;
+      }
+
+      .square {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        margin: 5px;
+
+        /* Add display: none; to all shapes except the circle,
+           so only it is displayed when the page is first loaded */
+        display: none;
+      }
+
+      .oval {
+        width: 200px;
+        height: 100px;
+        background: yellow;
+        border-radius: 100px / 50px;
+        margin: 5px;
+        display: none;
+      }
+
+      .rectangle {
+        width: 200px;
+        height: 100px;
+        background: green;
+        margin: 5px;
+        display: none;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid blue;
+        margin: 5px;
+        display: none;
+      }
+
+      .parallelogram {
+        width: 200px;
+        height: 100px;
+        transform: skew(20deg);
+        background: indigo;
+        margin: 5px;
+        display: none;
+      }
+
+      .trapezoid {
+        border-bottom: 100px solid violet;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        height: 0;
+        width: 200px;
+        margin: 5px;
+        display: none;
+      }
+    </style>
+
+    <title>Rainbow Shapes CSS</title>
+  </head>
+  <body>
+    <h1>Rainbow Shapes CSS</h1>
+
+    <!-- Set up 7 containers, each will contain 7 div's 
+         (circle, square, oval, rectangle, triangle,
+         parallelogram and trapezoid)
+         A class style will be used to style each shape
+         and an id to referance it to use with the javascript  -->
+    <div id="container1" class="container">
+      <div id="circle" class="circle"></div>
+      <div id="square" class="square"></div>
+      <div id="oval" class="oval"></div>
+      <div id="rectangle" class="rectangle"></div>
+      <div id="triangle" class="triangle"></div>
+      <div id="parallelogram" class="parallelogram"></div>
+      <div id="trapezoid" class="trapezoid"></div>
+    </div>
+
+    <div id="container2" class="container">
+      <div id="circle2" class="circle"></div>
+      <div id="square2" class="square"></div>
+      <div id="oval2" class="oval"></div>
+      <div id="rectangle2" class="rectangle"></div>
+      <div id="triangle2" class="triangle"></div>
+      <div id="parallelogram2" class="parallelogram"></div>
+      <div id="trapezoid2" class="trapezoid"></div>
+    </div>
+
+    <div id="container3" class="container">
+      <div id="circle3" class="circle"></div>
+      <div id="square3" class="square"></div>
+      <div id="oval3" class="oval"></div>
+      <div id="rectangle3" class="rectangle"></div>
+      <div id="triangle3" class="triangle"></div>
+      <div id="parallelogram3" class="parallelogram"></div>
+      <div id="trapezoid3" class="trapezoid"></div>
+    </div>
+    <div id="container4" class="container">
+      <div id="circle4" class="circle"></div>
+      <div id="square4" class="square"></div>
+      <div id="oval4" class="oval"></div>
+      <div id="rectangle4" class="rectangle"></div>
+      <div id="triangle4" class="triangle"></div>
+      <div id="parallelogram4" class="parallelogram"></div>
+      <div id="trapezoid4" class="trapezoid"></div>
+    </div>
+    <div id="container5" class="container">
+      <div id="circle5" class="circle"></div>
+      <div id="square5" class="square"></div>
+      <div id="oval5" class="oval"></div>
+      <div id="rectangle5" class="rectangle"></div>
+      <div id="triangle5" class="triangle"></div>
+      <div id="parallelogram5" class="parallelogram"></div>
+      <div id="trapezoid5" class="trapezoid"></div>
+    </div>
+    <div id="container6" class="container">
+      <div id="circle6" class="circle"></div>
+      <div id="square6" class="square"></div>
+      <div id="oval6" class="oval"></div>
+      <div id="rectangle6" class="rectangle"></div>
+      <div id="triangle6" class="triangle"></div>
+      <div id="parallelogram6" class="parallelogram"></div>
+      <div id="trapezoid6" class="trapezoid"></div>
+    </div>
+
+    <div id="container7" class="container">
+      <div id="circle7" class="circle"></div>
+      <div id="square7" class="square"></div>
+      <div id="oval7" class="oval"></div>
+      <div id="rectangle7" class="rectangle"></div>
+      <div id="triangle7" class="triangle"></div>
+      <div id="parallelogram7" class="parallelogram"></div>
+      <div id="trapezoid7" class="trapezoid"></div>
+    </div>
+
+    <script>
+      // Get all elements required and assign them to variables to use
+      // throughout the JavaScipt script
+
+      // Container elements
+      const container1 = document.getElementById("container1");
+      const container2 = document.getElementById("container2");
+      const container3 = document.getElementById("container3");
+      const container4 = document.getElementById("container4");
+      const container5 = document.getElementById("container5");
+      const container6 = document.getElementById("container6");
+      const container7 = document.getElementById("container7");
+
+      // Shape Elements of first container
+      const circle = document.getElementById("circle");
+      const square = document.getElementById("square");
+      const oval = document.getElementById("oval");
+      const rectangle = document.getElementById("rectangle");
+      const triangle = document.getElementById("triangle");
+      const parallelogram = document.getElementById("parallelogram");
+      const trapezoid = document.getElementById("trapezoid");
+
+      // Shape Elements of second container
+      const circle2 = document.getElementById("circle2");
+      const square2 = document.getElementById("square2");
+      const oval2 = document.getElementById("oval2");
+      const rectangle2 = document.getElementById("rectangle2");
+      const triangle2 = document.getElementById("triangle2");
+      const parallelogram2 = document.getElementById("parallelogram2");
+      const trapezoid2 = document.getElementById("trapezoid2");
+
+      // Shape Elements of third container
+      const circle3 = document.getElementById("circle3");
+      const square3 = document.getElementById("square3");
+      const oval3 = document.getElementById("oval3");
+      const rectangle3 = document.getElementById("rectangle3");
+      const triangle3 = document.getElementById("triangle3");
+      const parallelogram3 = document.getElementById("parallelogram3");
+      const trapezoid3 = document.getElementById("trapezoid3");
+
+      // Shape Elements of fourth container
+      const circle4 = document.getElementById("circle4");
+      const square4 = document.getElementById("square4");
+      const oval4 = document.getElementById("oval4");
+      const rectangle4 = document.getElementById("rectangle4");
+      const triangle4 = document.getElementById("triangle4");
+      const parallelogram4 = document.getElementById("parallelogram4");
+      const trapezoid4 = document.getElementById("trapezoid4");
+
+      // Shape Elements of fifth container
+      const circle5 = document.getElementById("circle5");
+      const square5 = document.getElementById("square5");
+      const oval5 = document.getElementById("oval5");
+      const rectangle5 = document.getElementById("rectangle5");
+      const triangle5 = document.getElementById("triangle5");
+      const parallelogram5 = document.getElementById("parallelogram5");
+      const trapezoid5 = document.getElementById("trapezoid5");
+
+      // Shape Elements of sixth container
+      const circle6 = document.getElementById("circle6");
+      const square6 = document.getElementById("square6");
+      const oval6 = document.getElementById("oval6");
+      const rectangle6 = document.getElementById("rectangle6");
+      const triangle6 = document.getElementById("triangle6");
+      const parallelogram6 = document.getElementById("parallelogram6");
+      const trapezoid6 = document.getElementById("trapezoid6");
+
+      // Shape Elements of seventh container
+      const circle7 = document.getElementById("circle7");
+      const square7 = document.getElementById("square7");
+      const oval7 = document.getElementById("oval7");
+      const rectangle7 = document.getElementById("rectangle7");
+      const triangle7 = document.getElementById("triangle7");
+      const parallelogram7 = document.getElementById("parallelogram7");
+      const trapezoid7 = document.getElementById("trapezoid7");
+
+      // Initialise a counter array, which represents clicks on each object
+      let count = [0, 0, 0, 0, 0, 0, 0];
+
+      // Function to change one shape to another shape
+      // Takes in parameters for circle, square, oval, rectangle, triangle
+      // parallelogram, trapezoid and a count array position
+      function changeShape(c, s, o, r, t, p, trap, i) {
+        // compare count[i] to different values in an if statement
+        if (count[i] == 0) {
+          // If i = 0 (0 previous clicks)
+          // Change the display style for each element
+          // Increase the counter
+          c.style.display = "none";
+          s.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 1) {
+          // If i = 1 (1 previous clicks)
+          // Change the display style for each element
+          s.style.display = "none";
+          o.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 2) {
+          // If i = 2 (2 previous clicks)
+          // Change the display style for each element
+          o.style.display = "none";
+          r.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 3) {
+          // If i = 3 (3 previous clicks)
+          // Change the display style for each element
+          r.style.display = "none";
+          t.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 4) {
+          // If i = 4 (4 previous clicks)
+          // Change the display style for each element
+          t.style.display = "none";
+          p.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 5) {
+          // If i = 5 (5 previous clicks)
+          // Change the display style for each element
+          p.style.display = "none";
+          trap.style.display = "block";
+          count[i]++;
+        } else if (count[i] == 6) {
+          // If i = 6 (6 previous clicks)
+          // Change the display style for each element
+          c.style.display = "block";
+          trap.style.display = "none";
+          // Reset click counter to 0
+          count[i] = 0;
+        }
+      }
+
+      // Set up event listeners for clicks on shape containers 1 -> 7
+      container1.addEventListener("click", function () {
+        changeShape(
+          circle,
+          square,
+          oval,
+          rectangle,
+          triangle,
+          parallelogram,
+          trapezoid,
+          // pass in counter array position
+          0
+        );
+      });
+
+      container2.addEventListener("click", function () {
+        changeShape(
+          circle2,
+          square2,
+          oval2,
+          rectangle2,
+          triangle2,
+          parallelogram2,
+          trapezoid2,
+          // pass in counter array position
+          1
+        );
+      });
+      container3.addEventListener("click", function () {
+        changeShape(
+          circle3,
+          square3,
+          oval3,
+          rectangle3,
+          triangle3,
+          parallelogram3,
+          trapezoid3,
+          // pass in counter array position
+          2
+        );
+      });
+      container4.addEventListener("click", function () {
+        changeShape(
+          circle4,
+          square4,
+          oval4,
+          rectangle4,
+          triangle4,
+          parallelogram4,
+          trapezoid4,
+          // pass in counter array position
+          3
+        );
+      });
+      container5.addEventListener("click", function () {
+        changeShape(
+          circle5,
+          square5,
+          oval5,
+          rectangle5,
+          triangle5,
+          parallelogram5,
+          trapezoid5,
+          // pass in counter array position
+          4
+        );
+      });
+      container6.addEventListener("click", function () {
+        changeShape(
+          circle6,
+          square6,
+          oval6,
+          rectangle6,
+          triangle6,
+          parallelogram6,
+          trapezoid6,
+          // pass in counter array position
+          5
+        );
+      });
+      container7.addEventListener("click", function () {
+        changeShape(
+          circle7,
+          square7,
+          oval7,
+          rectangle7,
+          triangle7,
+          parallelogram7,
+          trapezoid7,
+          // pass in counter array position
+          6
+        );
+      });
+    </script>
+  </body>
+</html>
